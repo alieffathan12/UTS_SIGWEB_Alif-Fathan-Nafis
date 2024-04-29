@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UTS_Alif Fathan Nafis_22/504798/SV/21708</title>
+    <meta charset="utf-8" />
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256- kLaT2GOSpHechhsozzB+flnD+zUyjE2LIfWPgU04xyl=" crossorigin=""/>
+    <style>
+        #map {
+            width: 100%;
+            height: 650px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center" style="font-family:'Lucida Sans';padding-top: 2%;font-size: larger;"><b>Mini Project Praktikum Sistem Informasi Geospasial berbasis WEB</b></p>
+                <p class="text-center" style="font-family:'Lucida Sans';"><b>Heatmap Persebaran Lokasi Foto Selama Periode April 2023-April 2024</b></p>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256- WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
+
+    <script src="PhotoLocation.js"></script>
+    <script>
+        var map = L.map('map').setView([-7.260876, 108.748498], 8);
+        mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; ' + mapLink + 'Contributors',
+                maxZoom: 18,
+            }).addTo(map);
+        var heat = L.heatLayer(PhotoLocation, {
+            radius: 16,
+            blur: 18,
+            maxZoom: 17,
+        }).addTo(map);
+    </script>
+</body>
+</html>
